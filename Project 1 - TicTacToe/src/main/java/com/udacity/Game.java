@@ -150,10 +150,48 @@ public class Game {
      */
     public String checkGameWinner(char [][]grid){
         String result = "None";
-        //Student code goes here ...
-        return result;
-    }
+        //checking columns
+        for (int i=0; i<3; i++) {
+            if (grid [i][0] == 'x' && grid[i][0] == grid[i][1] && grid[i][1] == grid[i][2]) {
+                return "X wins";
+            }
+            if (grid [i][0] == 'o' && grid[i][0] == grid[i][1] && grid[i][1] == grid[i][2]) {
+                return "O wins";
+            }
+        }
+        //checking rows
+        for (int j=0; j<3; j++) {
+            if (grid [0][j] == 'x' && grid[0][j] == grid[1][j] && grid[1][j] == grid[2][j]) {
+                return "X wins";
+            }
+            if (grid [0][j] == 'o' && grid[0][j] == grid[1][j] && grid[1][j] == grid[2][j]) {
+                return "O wins";
+            }
+        }
+        //checking diagonals
+        if (grid [0][0] == 'x' && grid[0][0] == grid[1][1] && grid[1][1] == grid[2][2]) {
+            return "X wins";
+        }
+        if (grid [0][0] == 'o' && grid[0][0] == grid[1][1] && grid[1][1] == grid[2][2]) {
+            return "O wins";
+        }
+        if (grid [2][0] == 'x' && grid[2][0] == grid[1][1] && grid[1][1] == grid[0][2]) {
+            return "X wins";
+        }
+        if (grid [2][0] == 'o' && grid[2][0] == grid[1][1] && grid[1][1] == grid[0][2]) {
+            return "O wins";
+        }
+        //checking if game is tied
+        for (int i=0; i<3; i++){
+            for (int j=0; j<3; j++){
+                if(grid[i][j] == '-'){
+                    return "None";
+                }
+            }
+        }
 
+        return "Tie";
+    }
     /**
      * Main function
      * @param args command line arguments
